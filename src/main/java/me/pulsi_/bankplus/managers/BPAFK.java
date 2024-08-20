@@ -43,7 +43,11 @@ public class BPAFK {
             }
         }
 
+<<<<<<< HEAD
         Bukkit.getScheduler().runTaskLater(plugin, this::startCountdown, 20L);
+=======
+        BankPlus.INSTANCE().getScheduler().runTaskLater(plugin, this::startCountdown, 20L);
+>>>>>>> afb2ba7 (-)
     }
 
     public Map<UUID, Long> getAfkCooldown() {

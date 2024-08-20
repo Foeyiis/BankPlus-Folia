@@ -1,5 +1,9 @@
 plugins {
     id 'java'
+<<<<<<< HEAD
+=======
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+>>>>>>> afb2ba7 (-)
 }
 
 group = 'me.pulsi_'
@@ -32,11 +36,21 @@ repositories {
 }
 
 dependencies {
+<<<<<<< HEAD
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
     compileOnly 'net.essentialsx:EssentialsX:2.20.0'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
     compileOnly 'me.clip:placeholderapi:2.11.3'
     implementation(fileTree(dir: 'libs', includes: ['*.jar']))
+=======
+    compileOnly 'dev.folia:folia-api:1.20.4-R0.1-SNAPSHOT'
+    compileOnly 'net.essentialsx:EssentialsX:2.20.0'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7'
+    compileOnly 'me.clip:placeholderapi:2.11.3'
+    compileOnly fileTree(dir: 'libs', includes: ['CMI-API9.7.0.1.jar'])
+    implementation 'com.github.Anon8281:UniversalScheduler:0.1.6'
+//    implementation(fileTree(dir: 'libs', includes: ['*.jar']))
+>>>>>>> afb2ba7 (-)
 }
 
 processResources {
@@ -50,5 +64,22 @@ processResources {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+<<<<<<< HEAD
     options.release = 17  // Ensures compatibility with Java 17
+=======
+    options.release = 17 // Ensures compatibility with Java 17
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    relocate 'com.github.Anon8281.universalscheduler', 'me.pulsi_.shadow.universalscheduler'
+}
+
+jar {
+    dependsOn shadowJar
+}
+
+build {
+    dependsOn shadowJar
+>>>>>>> afb2ba7 (-)
 }

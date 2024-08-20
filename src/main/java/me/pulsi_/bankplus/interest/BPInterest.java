@@ -65,7 +65,11 @@ public class BPInterest {
 
     public void giveInterestToEveryone() {
         cooldown = System.currentTimeMillis() + ConfigValues.getInterestDelay();
+<<<<<<< HEAD
         Bukkit.getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), this::giveInterest);
+=======
+        BankPlus.INSTANCE().getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), this::giveInterest);
+>>>>>>> afb2ba7 (-)
     }
 
     public void saveInterest(FileConfiguration savesConfig) {
@@ -75,7 +79,11 @@ public class BPInterest {
     private void loopInterest() {
         if (!isInterestActive()) return;
         if (getInterestCooldownMillis() <= 0) giveInterestToEveryone();
+<<<<<<< HEAD
         BPTaskManager.setTask(BPTaskManager.INTEREST_TASK, Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), this::loopInterest, 10L));
+=======
+        BPTaskManager.setTask(BPTaskManager.INTEREST_TASK, BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), this::loopInterest, 10L));
+>>>>>>> afb2ba7 (-)
     }
 
     public void giveInterest() {

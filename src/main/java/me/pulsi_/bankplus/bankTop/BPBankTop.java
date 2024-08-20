@@ -24,7 +24,11 @@ public class BPBankTop {
      * Update the bank top.
      */
     public static void updateBankTop() {
+<<<<<<< HEAD
         Bukkit.getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), () -> {
+=======
+        BankPlus.INSTANCE().getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
             bankTop.clear();
 
             HashMap<String, BigDecimal> balances = BPEconomy.getAllEconomiesBankBalances();
@@ -63,7 +67,12 @@ public class BPBankTop {
      */
     public static void restartBankTopUpdateTask() {
         long delay = ConfigValues.getUpdateBankTopDelay();
+<<<<<<< HEAD
         BPTaskManager.setTask(BPTaskManager.BANKTOP_BROADCAST_TASK, Bukkit.getScheduler().runTaskTimer(BankPlus.INSTANCE(), BPBankTop::updateBankTop, delay, delay));
+=======
+        BPTaskManager.setTask(BPTaskManager.BANKTOP_BROADCAST_TASK,
+                BankPlus.INSTANCE().getScheduler().runTaskTimer(BankPlus.INSTANCE(), BPBankTop::updateBankTop, delay, delay));
+>>>>>>> afb2ba7 (-)
     }
 
     /**

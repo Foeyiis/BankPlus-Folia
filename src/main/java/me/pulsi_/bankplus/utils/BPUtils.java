@@ -276,7 +276,11 @@ public class BPUtils {
     }
 
     public static void callEvent(Event event) {
+<<<<<<< HEAD
         Bukkit.getScheduler().runTask(BankPlus.INSTANCE(), () -> Bukkit.getPluginManager().callEvent(event));
+=======
+        BankPlus.INSTANCE().getScheduler().runTask(BankPlus.INSTANCE(), () -> Bukkit.getPluginManager().callEvent(event));
+>>>>>>> afb2ba7 (-)
     }
 
     public static String getRequiredItems(List<ItemStack> requiredItems) {

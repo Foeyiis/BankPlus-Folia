@@ -58,7 +58,11 @@ public class bStats {
         boolean logSentData = config.getBoolean("logSentData", false);
         boolean logResponseStatusText = config.getBoolean("logResponseStatusText", false);
         new MetricsBase("bukkit", serverUUID, 11612, enabled, this::appendPlatformData, this::appendServiceData,
+<<<<<<< HEAD
                 submitDataTask -> Bukkit.getScheduler().runTask(plugin, submitDataTask), plugin::isEnabled,
+=======
+                submitDataTask -> BankPlus.INSTANCE().getScheduler().runTask(plugin, submitDataTask), plugin::isEnabled,
+>>>>>>> afb2ba7 (-)
                 (message, error) -> this.plugin.getLogger().log(Level.WARNING, message, error),
                 (message) -> this.plugin.getLogger().log(Level.INFO, message), logErrors, logSentData,
                 logResponseStatusText);

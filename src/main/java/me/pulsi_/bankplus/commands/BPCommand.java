@@ -101,7 +101,11 @@ public abstract class BPCommand {
         if (confirmCooldown > 0) {
             String name = s.getName();
             if (!confirm.contains(name)) {
+<<<<<<< HEAD
                 Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> confirm.remove(name), confirmCooldown * 20L);
+=======
+                BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> confirm.remove(name), confirmCooldown * 20L);
+>>>>>>> afb2ba7 (-)
                 for (String message : confirmMessage) BPMessages.send(s, message, true);
                 confirm.add(name);
                 return false;
@@ -130,7 +134,11 @@ public abstract class BPCommand {
 
         if (cooldown > 0 && !(s instanceof ConsoleCommandSender)) {
             cooldowns.put(s.getName(), System.currentTimeMillis() + (cooldown * 1000L));
+<<<<<<< HEAD
             Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> cooldowns.remove(s.getName()), cooldown * 20L);
+=======
+            BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> cooldowns.remove(s.getName()), cooldown * 20L);
+>>>>>>> afb2ba7 (-)
         }
     }
 

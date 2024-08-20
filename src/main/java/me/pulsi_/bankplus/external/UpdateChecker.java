@@ -27,7 +27,11 @@ public class UpdateChecker implements Listener {
         button.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click here to download it!").color(ChatColor.GRAY).create()));
         text.addExtra(button);
 
+<<<<<<< HEAD
         Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> {
+=======
+        BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
             p.sendMessage("");
             p.spigot().sendMessage(text);
             p.sendMessage("");

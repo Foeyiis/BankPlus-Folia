@@ -66,7 +66,11 @@ public class EconomyUtils {
      */
     public static void saveEveryone(boolean async) {
         if (async) {
+<<<<<<< HEAD
             Bukkit.getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), () -> {
+=======
+            BankPlus.INSTANCE().getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
                 for (UUID uuid : BPEconomy.getLoadedPlayers())
                     savePlayer(uuid, Bukkit.getPlayer(uuid) == null);
             });
@@ -85,6 +89,10 @@ public class EconomyUtils {
         if (delay <= 0) return;
 
         long minutes = delay * 1200L;
+<<<<<<< HEAD
         BPTaskManager.setTask(BPTaskManager.MONEY_SAVING_TASK, Bukkit.getScheduler().runTaskTimer(BankPlus.INSTANCE(), () -> saveEveryone(true), minutes, minutes));
+=======
+        BPTaskManager.setTask(BPTaskManager.MONEY_SAVING_TASK, BankPlus.INSTANCE().getScheduler().runTaskTimer(BankPlus.INSTANCE(), () -> saveEveryone(true), minutes, minutes));
+>>>>>>> afb2ba7 (-)
     }
 }

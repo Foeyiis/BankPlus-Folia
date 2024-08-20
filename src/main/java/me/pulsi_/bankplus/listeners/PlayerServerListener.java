@@ -17,7 +17,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+<<<<<<< HEAD
 import org.bukkit.scheduler.BukkitTask;
+=======
+import com.github.Anon8281.universalScheduler.scheduling.tasks.MyScheduledTask;
+>>>>>>> afb2ba7 (-)
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -48,7 +52,11 @@ public class PlayerServerListener implements Listener {
 
         BigDecimal finalAmount = amount;
         if (finalAmount.compareTo(BigDecimal.ZERO) > 0)
+<<<<<<< HEAD
             Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () ->
+=======
+            BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () ->
+>>>>>>> afb2ba7 (-)
                             BPMessages.send(p, ConfigValues.getOfflineInterestMessage(), BPUtils.placeValues(finalAmount), true),
                     ConfigValues.getNotifyOfflineInterestDelay() * 20L);
     }
@@ -59,7 +67,11 @@ public class PlayerServerListener implements Listener {
 
         BPPlayer player = PlayerRegistry.get(p);
         if (player != null) {
+<<<<<<< HEAD
             BukkitTask updating = player.getBankUpdatingTask();
+=======
+            MyScheduledTask updating = player.getBankUpdatingTask();
+>>>>>>> afb2ba7 (-)
             if (updating != null) updating.cancel();
         }
 

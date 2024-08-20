@@ -88,7 +88,11 @@ public class TransferCmd extends BPCommand {
     public void onExecution(CommandSender s, String[] args) {
         BPMessages.send(s, "%prefix% &7Task initialized, wait a few moments...", true);
 
+<<<<<<< HEAD
         Bukkit.getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), () -> {
+=======
+        BankPlus.INSTANCE().getScheduler().runTaskAsynchronously(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
             if (args[1].equalsIgnoreCase("filestodatabase")) filesToDatabase();
             else databaseToFile();
 

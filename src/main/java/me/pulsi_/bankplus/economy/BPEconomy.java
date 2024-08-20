@@ -582,7 +582,11 @@ public class BPEconomy {
         BankGui bankGui = getOriginBank().getBankGui();
         pl.setOpenedBankGui(bankGui);
 
+<<<<<<< HEAD
         pl.setClosingTask(Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> {
+=======
+        pl.setClosingTask(BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
             PlayerChatMethod.reopenBank(p, bankGui);
             BPMessages.send(p, "Chat-Time-Expired");
         }, ConfigValues.getChatExitTime() * 20L));
@@ -603,7 +607,11 @@ public class BPEconomy {
         BankGui bankGui = getOriginBank().getBankGui();
         pl.setOpenedBankGui(bankGui);
 
+<<<<<<< HEAD
         pl.setClosingTask(Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> {
+=======
+        pl.setClosingTask(BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
             PlayerChatMethod.reopenBank(p, bankGui);
             BPMessages.send(p, "Chat-Time-Expired");
         }, ConfigValues.getChatExitTime() * 20L));

@@ -96,6 +96,10 @@ public class AddAllCmd extends BPCommand {
             economy.addBankBalance(copy.remove(0), amount);
         }
 
+<<<<<<< HEAD
         Bukkit.getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> addAll(copy, amount, economy), 1);
+=======
+        BankPlus.INSTANCE().getScheduler().runTaskLater(BankPlus.INSTANCE(), () -> addAll(copy, amount, economy), 1);
+>>>>>>> afb2ba7 (-)
     }
 }

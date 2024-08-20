@@ -12,7 +12,11 @@ import me.pulsi_.bankplus.values.MultipleBanksValues;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+<<<<<<< HEAD
 import org.bukkit.scheduler.BukkitTask;
+=======
+import com.github.Anon8281.universalScheduler.scheduling.tasks.MyScheduledTask;
+>>>>>>> afb2ba7 (-)
 
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +42,11 @@ public class BankListGui extends BankGui {
     public void openBankGui(Player p, boolean bypass) {
         BPPlayer player = PlayerRegistry.get(p);
 
+<<<<<<< HEAD
         BukkitTask updating = player.getBankUpdatingTask();
+=======
+        MyScheduledTask updating = player.getBankUpdatingTask();
+>>>>>>> afb2ba7 (-)
         if (updating != null) updating.cancel();
 
         if (MultipleBanksValues.isDirectlyOpenIf1IsAvailable()) {
@@ -58,7 +66,11 @@ public class BankListGui extends BankGui {
         updateBankGuiMeta(bankListInventory, p);
 
         long delay = MultipleBanksValues.getUpdateDelay();
+<<<<<<< HEAD
         if (delay >= 0) player.setBankUpdatingTask(Bukkit.getScheduler().runTaskTimer(BankPlus.INSTANCE(), () -> updateBankGuiMeta(bankListInventory, p), delay, delay));
+=======
+        if (delay >= 0) player.setBankUpdatingTask(BankPlus.INSTANCE().getScheduler().runTaskTimer(BankPlus.INSTANCE(), () -> updateBankGuiMeta(bankListInventory, p), delay, delay));
+>>>>>>> afb2ba7 (-)
 
         player.setOpenedBankGui(this);
         if (ConfigValues.isPersonalSoundEnabled()) {

@@ -1,7 +1,16 @@
 package me.pulsi_.bankplus.xSeries;
 
+<<<<<<< HEAD
 import com.google.common.base.Enums;
 import com.google.common.base.Strings;
+=======
+import com.github.Anon8281.universalScheduler.UniversalScheduler;
+import com.github.Anon8281.universalScheduler.scheduling.schedulers.TaskScheduler;
+import com.google.common.base.Enums;
+import com.google.common.base.Strings;
+import me.pulsi_.bankplus.BankPlus;
+import me.pulsi_.bankplus.managers.BPTaskManager;
+>>>>>>> afb2ba7 (-)
 import org.bukkit.Instrument;
 import org.bukkit.Location;
 import org.bukkit.Note;
@@ -10,7 +19,11 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
+<<<<<<< HEAD
 import org.bukkit.scheduler.BukkitTask;
+=======
+import com.github.Anon8281.universalScheduler.scheduling.tasks.MyScheduledTask;
+>>>>>>> afb2ba7 (-)
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -1777,7 +1790,11 @@ public enum XSound {
      * @since 2.0.0
      */
     @Nonnull
+<<<<<<< HEAD
     public static BukkitTask playAscendingNote(@Nonnull Plugin plugin, @Nonnull Player player, @Nonnull Entity playTo, @Nonnull Instrument instrument,
+=======
+    public static MyScheduledTask playAscendingNote(@Nonnull Plugin plugin, @Nonnull Player player, @Nonnull Entity playTo, @Nonnull Instrument instrument,
+>>>>>>> afb2ba7 (-)
                                                int ascendLevel, int delay) {
         Objects.requireNonNull(player, "Cannot play note from null player");
         Objects.requireNonNull(playTo, "Cannot play note to null entity");
@@ -1786,15 +1803,50 @@ public enum XSound {
         if (ascendLevel > 7) throw new IllegalArgumentException("Note ascend level cannot be greater than 7");
         if (delay <= 0) throw new IllegalArgumentException("Delay ticks must be at least 1");
 
+<<<<<<< HEAD
         return new BukkitRunnable() {
+=======
+//        new BukkitRunnable() {
+//            int repeating = ascendLevel;
+//
+//            @Override
+//            public void run() {
+//                player.playNote(playTo.getLocation(), instrument, Note.natural(1, Note.Tone.values()[ascendLevel - repeating]));
+//                if (repeating-- == 0) cancel();
+//            }
+//        }.runTaskLater(BankPlus.INSTANCE(), 1);
+
+        MyScheduledTask task = BankPlus.INSTANCE().getScheduler().runTaskTimerAsynchronously(plugin, new Runnable() {
+>>>>>>> afb2ba7 (-)
             int repeating = ascendLevel;
 
             @Override
             public void run() {
                 player.playNote(playTo.getLocation(), instrument, Note.natural(1, Note.Tone.values()[ascendLevel - repeating]));
+<<<<<<< HEAD
                 if (repeating-- == 0) cancel();
             }
         }.runTaskTimerAsynchronously(plugin, 0, delay);
+=======
+                if (repeating-- == 0) {
+                    BPTaskManager.removeTask("ascend_note_task");  // Remove the task from the manager when done
+                    cancel();
+                }
+            }
+
+            private void cancel() {
+                MyScheduledTask currentTask = BPTaskManager.getTask("ascend_note_task");
+                if (currentTask != null) {
+                    currentTask.cancel();  // Cancel the task through UniversalScheduler
+                }
+            }
+        }, 0L, delay);  // 0L is the initial delay, 'delay' is the interval between task executions
+
+        // Register the task in the BPTaskManager
+        BPTaskManager.setTask("ascend_note_task", task);
+
+        return task;
+>>>>>>> afb2ba7 (-)
     }
 
     /**
@@ -1850,7 +1902,11 @@ public enum XSound {
      * @since 2.0.0
      */
     @Nonnull
+<<<<<<< HEAD
     public BukkitTask playRepeatedly(@Nonnull Plugin plugin, @Nonnull Entity entity, float volume, float pitch, int repeat, int delay) {
+=======
+    public MyScheduledTask playRepeatedly(@Nonnull Plugin plugin, @Nonnull Entity entity, float volume, float pitch, int repeat, int delay) {
+>>>>>>> afb2ba7 (-)
         return playRepeatedly(plugin, Collections.singleton(entity), volume, pitch, repeat, delay);
     }
 
@@ -1868,14 +1924,22 @@ public enum XSound {
      * @since 2.0.0
      */
     @Nonnull
+<<<<<<< HEAD
     public BukkitTask playRepeatedly(@Nonnull Plugin plugin, @Nonnull Iterable<? extends Entity> entities, float volume, float pitch, int repeat, int delay) {
+=======
+    public MyScheduledTask playRepeatedly(@Nonnull Plugin plugin, @Nonnull Iterable<? extends Entity> entities, float volume, float pitch, int repeat, int delay) {
+>>>>>>> afb2ba7 (-)
         Objects.requireNonNull(plugin, "Cannot play repeating sound from null plugin");
         Objects.requireNonNull(entities, "Cannot play repeating sound at null locations");
 
         if (repeat <= 0) throw new IllegalArgumentException("Cannot repeat playing sound " + repeat + " times");
         if (delay <= 0) throw new IllegalArgumentException("Delay ticks must be at least 1");
 
+<<<<<<< HEAD
         return new BukkitRunnable() {
+=======
+        return BankPlus.INSTANCE().getScheduler().runTaskTimerAsynchronously(plugin, new Runnable() {
+>>>>>>> afb2ba7 (-)
             int repeating = repeat;
 
             @Override
@@ -1884,9 +1948,24 @@ public enum XSound {
                     play(entity.getLocation(), volume, pitch);
                 }
 
+<<<<<<< HEAD
                 if (repeating-- == 0) cancel();
             }
         }.runTaskTimer(plugin, 0, delay);
+=======
+                if (repeating-- == 0) {
+                    cancel();
+                }
+            }
+
+            private void cancel() {
+                MyScheduledTask currentTask = BPTaskManager.getTask("repeating_sound_task");
+                if (currentTask != null) {
+                    currentTask.cancel();  // Cancel the task through UniversalScheduler
+                }
+            }
+        }, 0L, delay);
+>>>>>>> afb2ba7 (-)
     }
 
     /**

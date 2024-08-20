@@ -86,6 +86,7 @@ public class BPMessages {
         if (fromString) messagesToSend.add(identifier);
         else messagesToSend.addAll(messages.get(identifier));
 
+<<<<<<< HEAD
         List<String> finalMessages = new ArrayList<>();
         for (String message : messagesToSend) {
             if (replacers != null) {
@@ -105,6 +106,31 @@ public class BPMessages {
                     }
                 }
             }
+=======
+        Object[] replacers2 = Arrays.stream(replacers).toArray();
+
+        List<String> finalMessages = new ArrayList<>();
+        for (String message : messagesToSend) {
+            for (Object object : replacers2) {
+                if (object == null) continue;  // Skip if object is null
+
+                List<String> possibleReplacers = new ArrayList<>();
+
+                if (!(object instanceof Collection)) possibleReplacers.add(object.toString());
+                else for (Object collectionObject : ((Collection<?>) object).toArray())
+                    possibleReplacers.add(collectionObject.toString());
+
+                for (String replacer : possibleReplacers) {
+                    if (!replacer.contains("$")) continue;
+
+                    String[] split = replacer.split("\\$");
+                    String target = split[0], replacement = split[1];
+                    message = message.replace(target, replacement);
+                }
+            }
+
+
+>>>>>>> afb2ba7 (-)
             if (!message.isEmpty()) finalMessages.add(message);
         }
         return finalMessages;

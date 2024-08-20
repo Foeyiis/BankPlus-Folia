@@ -13,7 +13,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+<<<<<<< HEAD
 import org.bukkit.scheduler.BukkitTask;
+=======
+import com.github.Anon8281.universalScheduler.scheduling.tasks.MyScheduledTask;
+>>>>>>> afb2ba7 (-)
 
 import java.math.BigDecimal;
 
@@ -72,8 +76,13 @@ public class PlayerChatMethod {
     }
 
     public static void reopenBank(Player p, BankGui openedBankGui) {
+<<<<<<< HEAD
         Bukkit.getScheduler().runTask(BankPlus.INSTANCE(), () -> {
             BukkitTask task = PlayerRegistry.get(p).getClosingTask();
+=======
+        BankPlus.INSTANCE().getScheduler().runTask(BankPlus.INSTANCE(), () -> {
+            MyScheduledTask task = PlayerRegistry.get(p).getClosingTask();
+>>>>>>> afb2ba7 (-)
             if (task != null) task.cancel();
 
             BPSets.playerDepositing.remove(p.getUniqueId());
@@ -83,7 +92,11 @@ public class PlayerChatMethod {
     }
 
     private static void executeExitCommands(Player p) {
+<<<<<<< HEAD
         Bukkit.getScheduler().runTask(BankPlus.INSTANCE(), () -> {
+=======
+        BankPlus.INSTANCE().getScheduler().runTask(BankPlus.INSTANCE(), () -> {
+>>>>>>> afb2ba7 (-)
             for (String cmd : ConfigValues.getExitCommands()) {
                 if (cmd.startsWith("[CONSOLE]")) {
                     String s = cmd.replace("[CONSOLE] ", "").replace("%player%", p.getName());

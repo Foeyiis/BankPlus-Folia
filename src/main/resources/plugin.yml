@@ -2,6 +2,10 @@ name: BankPlus
 version: '${version}'
 main: me.pulsi_.bankplus.BankPlus
 api-version: 1.13
+<<<<<<< HEAD
+=======
+folia-supported: true
+>>>>>>> afb2ba7 (-)
 depend:
   - Vault
 softdepend:

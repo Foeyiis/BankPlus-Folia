@@ -16,7 +16,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+<<<<<<< HEAD
 import org.bukkit.scheduler.BukkitTask;
+=======
+import com.github.Anon8281.universalScheduler.scheduling.tasks.MyScheduledTask;
+>>>>>>> afb2ba7 (-)
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -133,7 +137,11 @@ public class BankGui {
         BPPlayer player = PlayerRegistry.get(p);
         if (player == null) player = PlayerRegistry.loadPlayer(p);
 
+<<<<<<< HEAD
         BukkitTask updating = player.getBankUpdatingTask();
+=======
+        MyScheduledTask updating = player.getBankUpdatingTask();
+>>>>>>> afb2ba7 (-)
         if (updating != null) updating.cancel();
 
         String title = this.title;
@@ -144,7 +152,11 @@ public class BankGui {
         placeContent(bankItems, bankInventory, p);
         updateBankGuiMeta(bankInventory, p);
 
+<<<<<<< HEAD
         if (updateDelay >= 0) player.setBankUpdatingTask(Bukkit.getScheduler().runTaskTimer(BankPlus.INSTANCE(), () -> updateBankGuiMeta(bankInventory, p), updateDelay, updateDelay));
+=======
+        if (updateDelay >= 0) player.setBankUpdatingTask(BankPlus.INSTANCE().getScheduler().runTaskTimer(BankPlus.INSTANCE(), () -> updateBankGuiMeta(bankInventory, p), updateDelay, updateDelay));
+>>>>>>> afb2ba7 (-)
 
         player.setOpenedBankGui(this);
         if (ConfigValues.isPersonalSoundEnabled()) {
